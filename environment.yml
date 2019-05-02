@@ -6,7 +6,7 @@ stages:
     steps:
     - script: echo 'Build'
 
-- stage: PPE
+- stage: Environment
   jobs:
   - job: Test
     pool: 'Hosted VS2017'
@@ -22,3 +22,15 @@ stages:
           steps:
           - script: echo Hello, world!
             displayName: 'Run a one-line script'
+
+- stage: ServiceEndpoint
+  jobs:
+  - job: DeployProd
+    pool: 'Hosted VS2017'
+    steps:
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Azure Deployment:Start action on ankhokha-RG'
+      inputs:
+        azureSubscription: ankhokha
+        action: Start
+        resourceGroupName: 'ankhokha-RG'
