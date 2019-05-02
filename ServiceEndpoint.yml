@@ -1,0 +1,12 @@
+stages:
+- stage: ServiceEndpoint
+  jobs:
+  - job: DeployProd
+    pool: 'Hosted VS2017'
+    steps:
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Azure Deployment:Start action on ankhokha-RG'
+      inputs:
+        azureSubscription: ankhokha
+        action: Start
+        resourceGroupName: 'ankhokha-RG'
