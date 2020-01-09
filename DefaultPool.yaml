@@ -1,0 +1,8 @@
+stages:
+- stage: PoolCheckStage
+  jobs:
+  - job: Test
+    pool: 'Default'
+    steps:
+    - script: echo 'Hosted'
+    - task: NuGetToolInstaller@0
