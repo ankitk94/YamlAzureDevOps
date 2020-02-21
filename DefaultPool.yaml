@@ -4,5 +4,5 @@ stages:
   - job: Test
     pool: 'Default'
     steps:
-    - script: echo 'Some message'
+    - script: echo 'Hosted'
     - task: NuGetToolInstaller@0
